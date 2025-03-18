@@ -57,15 +57,7 @@ endmodule
 ---
 Now let us understand what is it
 
- ```bash
-  #module top (
-  output wire led_red  , 
-  output wire led_blue , 
-  output wire led_green , 
-  input wire hw_clk, 
-  output wire testwire
-);
- ```
+```bash
 1. This Verilog module, named "top", is designed for a FPGA board
    We have the Outputs 
 2. "led_red, led_blue, led_green": Control an RGB LED.
@@ -82,5 +74,77 @@ Now let us understand what is it
 "RGB1PWM = 0" → Green LED OFF
 "RGB2PWM = 1" → Blue LED ON
 "defparam" sets the lowest brightness (Default Parameters)
+There is also a code line stating the RGB numbers-
+RGB0 → led_red
+RGB1 → led_green
+RGB2 → led_blue
+ ```
+# Now what is the Purpose of the Module?
+~Generates an internal clock using an FPGA’s high-frequency oscillator (SB_HFOSC).
+~Implements a 28-bit counter to create a lower-frequency signal.
+~Drives an RGB LED using the SB_RGBA_DRV hardware block.
+~Outputs a test signal (testwire) from the counter’s 5th bit, creating a low-frequency square wave.
+
+# Description of internal logic and oscillator 
+```bash
+"SB_HFOSC" is an Internal Oscillator
+
+SB_HFOSC #(.CLKHF_DIV ("0b10")) u_SB_HFOSC ( 
+ .CLKHFPU(1'b1), 
+ .CLKHFEN(1'b1), 
+ .CLKHF(int_osc)
+ ) ;
+
+SB_HFOSC is a built-in FPGA high-frequency oscillator.
+CLKHF_DIV = "0b10" sets the oscillator frequency to 12 MHz (48 MHz ÷ 4).
+The output int_osc is the clock signal used in the module.
+There is a Frequency counter too
+A 28-bit counter (frequency_counter_i) increments on every positive clock edge.
+Since int_osc is 12 MHz, the counter increases every 83.3 ns.
+testwire toggles at ~187.5 kHz, acting as a test signal.
+ ```
+# What is the Functionality of the RGB LED Driver and Relationship to Outputs
+First let us check waht is the RGB LED driver here
+```bash
+
+  SB_RGBA_DRV RGB_DRIVER (
+    .RGBLEDEN(1'b1),
+    .RGB0PWM (1'b0), 
+    .RGB1PWM (1'b0),
+    .RGB2PWM (1'b1),
+    .CURREN  (1'b1),
+    .RGB0    (led_red), 
+    .RGB1    (led_green),
+    .RGB2    (led_blue)
+  );
+  defparam RGB_DRIVER.RGB0_CURRENT = "0b000001";
+  defparam RGB_DRIVER.RGB1_CURRENT = "0b000001";
+  defparam RGB_DRIVER.RGB2_CURRENT = "0b000001";
+
+endmodule
+
+
+Here you can see that there is a driver, "SB_RGBA_DRV"
+This is a special hardware block that directly drives an RGB LED.
+RGBLEDEN = 1'b1 enables the driver.
+PWM Inputs
+RGB0PWM = 0 - Red LED OFF
+RGB1PWM = 0 - Green LED OFF
+RGB2PWM = 1 - Blue LED ON
+Outputs
+RGB0 → led_red
+RGB1 → led_green
+RGB2 → led_blue
+These connect to the actual LED pins.
+Check the 
+Sets the current (brightness) for each LED color.
+0b000001 = low brightness.
+The Blue LED (led_blue) is always ON, while Red and Green are OFF.
+The LED pins (led_red, led_green, led_blue) directly connect to the RGB LED hardware.
+TIP-Modifying RGBxPWM dynamically could change the LED color.
+```
+Wanted the table for the functionality??
+Here you go
+![image](https://github.com/user-attachments/assets/2c5673c4-0e2a-424f-8845-3fb1efb36ba2)
 
 </details>
