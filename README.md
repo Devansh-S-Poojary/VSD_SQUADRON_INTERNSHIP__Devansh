@@ -148,3 +148,42 @@ Here you go
 ![image](https://github.com/user-attachments/assets/2c5673c4-0e2a-424f-8845-3fb1efb36ba2)
 
 </details>
+
+<details>
+  <summary>
+    
+# Step 2: Creating the PCF File
+  </summary>
+  
+  Access the PCF file from the provided link: https://github.com/thesourcerer8/VSDSquadron_FM/blob/main/led_blue/VSDSquadronFM.pcf
+  This the code
+  ```bash
+set_io  led_red	39
+set_io  led_blue 40
+set_io  led_green 41
+set_io  hw_clk 20
+set_io  testwire 17
+```
+# What does it say?
+set_io → Assigns a Verilog signal to a specific physical FPGA pin.
+<led_blue> (example) → The name of the signal in the Verilog code.
+<40> (example) → The pin number
+```bash
+Name of Signal   Pin number     Functionality
+led_red	           39	        Red LED output
+led_blue	   40	        Blue LED output
+led_green	   41	        Green LED output
+hw_clk	           20	        External hardware clock input
+testwire	   17	        Test signal output
+```
+The pin mappings are connected to the chip.
+
+```
+Pin	Signal	  Function in Verilog	          Function in Hardware
+39	led_red	         Controls red LED	          Red LED output
+40	led_blue	 Controls blue LED	          Blue LED output (Always ON)
+41	led_green	 Controls green LED	          Green LED output (OFF)
+20	hw_clk	         Unused in Verilog	          Reserved for external clock
+17	testwire	 Outputs a slow test signal	  Debugging pin
+```
+</details>
