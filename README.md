@@ -186,4 +186,16 @@ Pin	Signal	  Function in Verilog	          Function in Hardware
 20	hw_clk	         Unused in Verilog	          Reserved for external clock
 17	testwire	 Outputs a slow test signal	  Debugging pin
 ```
+# What does it Imply?
+**The blue LED is always on (1'b1).**
+
+**The red and green LEDs are off (1'b0).**
+
+**The design uses an internal oscillator, so hw_clk is unused.**
+
+**Test Wire outputs a debugging signal that can be checked with an oscilloscope.**
+
+# Creating a PCF file
+Access the pcf file from the attachments from this repo
+
 </details>
