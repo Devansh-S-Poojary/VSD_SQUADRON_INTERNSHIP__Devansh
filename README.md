@@ -79,23 +79,16 @@ You can see this inside it
 # Task-1 
   </summary>
   
-  <details>
-  <summary> 
-    
 ## Objective:
-  </summary>
                
 Participants are expected to understand and document the provided Verilog code, create the necessary PCF file, and integrate the design with the VSDSquadron FPGA Mini board using the provided datasheet.
 
-</details>
-<details>
-  <summary> 
-        
 ## Step 1 Understanding the Verilog Code
-  </summary>
+ 
 
- This is the Verilog code link- https://github.com/thesourcerer8/VSDSquadron_FM/blob/main/led_blue/top.v 
-
+ This is the Verilog code link- 
+ 
+ https://github.com/thesourcerer8/VSDSquadron_FM/blob/main/led_blue/top.v 
 
 
  ```bash
@@ -160,12 +153,17 @@ RGB1 → led_green
 RGB2 → led_blue
  ```
 # Now what is the Purpose of the Module?
-~Generates an internal clock using an FPGA’s high-frequency oscillator (SB_HFOSC).
-~Implements a 28-bit counter to create a lower-frequency signal.
-~Drives an RGB LED using the SB_RGBA_DRV hardware block.
-~Outputs a test signal (testwire) from the counter’s 5th bit, creating a low-frequency square wave.
+
+- Generates an internal clock using an FPGA’s high-frequency oscillator (SB_HFOSC).
+
+- Implements a 28-bit counter to create a lower-frequency signal.
+  
+- Drives an RGB LED using the SB_RGBA_DRV hardware block.
+  
+- Outputs a test signal (testwire) from the counter’s 5th bit, creating a low-frequency square wave.
 
 # Description of internal logic and oscillator 
+
 ```bash
 "SB_HFOSC" is an Internal Oscillator
 
@@ -205,8 +203,11 @@ endmodule
 
 
 Here you can see that there is a driver, "SB_RGBA_DRV"
+
 This is a special hardware block that directly drives an RGB LED.
+
 RGBLEDEN = 1'b1 enables the driver.
+
 PWM Inputs
 RGB0PWM = 0 - Red LED OFF
 RGB1PWM = 0 - Green LED OFF
@@ -224,19 +225,19 @@ The LED pins (led_red, led_green, led_blue) directly connect to the RGB LED hard
 TIP-Modifying RGBxPWM dynamically could change the LED color.
 ```
 Wanted the table for the functionality??
-Here you go
+   Here you go
 ![image](https://github.com/user-attachments/assets/2c5673c4-0e2a-424f-8845-3fb1efb36ba2)
 
-</details>
 
-<details>
-  <summary>
-    
 ## Step 2: Creating the PCF File
-  </summary>
   
-  Access the PCF file from the provided link: https://github.com/thesourcerer8/VSDSquadron_FM/blob/main/led_blue/VSDSquadronFM.pcf
+  
+  Access the PCF file from the provided link: 
+  
+  https://github.com/thesourcerer8/VSDSquadron_FM/blob/main/led_blue/VSDSquadronFM.pcf 
+  
   This the code
+  
   ```bash
 set_io  led_red	39
 set_io  led_blue 40
@@ -245,9 +246,12 @@ set_io  hw_clk 20
 set_io  testwire 17
 ```
 # What does it say?
-set_io → Assigns a Verilog signal to a specific physical FPGA pin.
+set_io → Assigns a Verilog signal to a specific physical FPGA pin.  
+
 <led_blue> (example) → The name of the signal in the Verilog code.
+
 <40> (example) → The pin number
+
 ```bash
 Name of Signal   Pin number     Functionality
 led_red	           39	        Red LED output
@@ -277,13 +281,8 @@ Pin	Signal	  Function in Verilog	          Function in Hardware
 
 # Creating a PCF file
 Access the pcf file from the attachments, They are working in my board successfully.
-</details>
 
-<details>
-  <summary> 
-    
 ## Step-3 Implement in VSDsquadron  
-  </summary>
 
   First lets check the Blue project
    Refer to the Datasheet to upload it. these are the results
@@ -308,13 +307,8 @@ I had a hard time taking the photos of the superfast blinker
 
  **And this continues**
 
-</details>
-
-<details>
- <summary>
-
    ## Step-4 Final Documentation
- </summary>
+
  
  # Summary of the Verilog Code Functionality
  
@@ -377,18 +371,26 @@ Pin	Signal	  Function in Verilog	          Function in Hardware
 # Challenges Faced
 
 Overall, I have faced many challenges like
+
 - Virtual Box is not responding
+  
 - USB Device not detected
+  
 - Code mappings are mismatched
+  
 - Timing mismatch and so on.
+  
 
 For **MOST OF THESE PROBLEMS**, the Solution was restarting the computer and Virtual box. But these were the extra solutions for them, respectively.
+
 - Restart the Virtual box/Computer OR Check if it has been properly installed as per the datasheet.
+  
 - Go to Devices in Virtual machine>USB>And then select the board name (FTDI Single) an so on OR Restart the machine OR check the USB cable.
+  
 - Recheck the code again and find the mistakes
+  
 - Restart the machine OR check the code.
   
- </details>
 
 </details>
 
