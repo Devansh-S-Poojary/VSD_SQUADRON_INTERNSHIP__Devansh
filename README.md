@@ -208,7 +208,7 @@ Access the pcf file from the attachments, They are working in my board successfu
 <details>
   <summary> 
     
-# Step-3 Implement in VSDsquadron board 
+# Step-3 Implement in VSDsquadron  
   </summary>
 
   First lets check the Blue project
@@ -236,5 +236,89 @@ I had a hard time taking the photos of the superfast blinker
 
 </details>
 
+<details>
+ <summary>
+
+   # Step-4 Final Documentation
+ </summary>
+ 
+ # Summary of the Verilog Code Functionality
+ 
+The given Verilog code is designed for an FPGA board to drive an RGB LED and generate a test signal. It uses an internal high frequency oscillator to increment a counter, which in turn affects the test output. The RGB LED driver is instantiated but hardcoded to enable only the blue LED.
+
+# Key Components of the Code:
+
+# 1. Internal Oscillator (SB_HFOSC)
+
+- Generates the clock signal (int_osc), which is used as the main timing source.
+
+- The frequency divider is set to "0b10", which likely corresponds to a specific clock frequency.
+
+# 2. Counter (frequency_counter_i)
+
+- A 28-bit counter increments on every clock cycle of int_osc.
+
+- The 6th bit (frequency_counter_i[5]) is used as an output (testwire), likely generating a low-frequency test signal.
+
+# 3. RGB LED Driver (SB_RGBA_DRV)
+
+- Controls the onboard RGB LED with RGB0, RGB1, and RGB2 connected to led_red, led_green, and led_blue, respectively.
+
+- Only the blue LED (RGB2PWM) is enabled (1'b1), meaning the LED will only light up blue.
+
+- The brightness for each LED channel is set to the lowest level (0b000001).
+
+## Pin Mappings
+
+```
+Pin	Signal	  Function in Verilog	          Function in Hardware
+39	led_red	         Controls red LED	          Red LED output
+40	led_blue	 Controls blue LED	          Blue LED output (Always ON)
+41	led_green	 Controls green LED	          Green LED output (OFF)
+20	hw_clk	         Unused in Verilog	          Reserved for external clock
+17	testwire	 Outputs a slow test signal	  Debugging pin
+```
+# Integration Steps and Observations while Working with the FPGA Mini Board
+
+## 1. Synthesis & Implementation:
+
+- The Verilog code needs to be synthesized using a tool like Yosys and implemented with NextPNR or a similar FPGA place-and-route tool.
+
+- The PCF file ensures the correct mapping of logic to physical FPGA pins.
+
+## 2. Programming the FPGA:
+
+- After generating the bitstream, it must be loaded onto the FPGA using OpenFPGALoader or vendor-specific tools.
+
+## 3. Hardware Testing:
+
+- Upon power-up, the onboard oscillator starts running.
+
+- The counter increments, affecting testwire, which can be probed with an oscilloscope or logic analyzer.
+
+- The RGB LED should glow blue because of the SB_RGBA_DRV configuration.
+
+- If there are any Mistakes, or the output is not as expected, this is a way to correct it.
+
+# Challenges Faced
+
+Overall, I have faced many challenges like
+- Virtual Box is not responding
+- USB Device not detected
+- Code mappings are mismatched
+- Timing mismatch and so on.
+
+For **MOST OF THESE PROBLEMS**, the Solution was restarting the computer and Virtual box. But these were the extra solutions for them, respectively.
+- Restart the Virtual box/Computer OR Check if it has been properly installed as per the datasheet.
+- Go to Devices in Virtual machine>USB>And then select the board name (FTDI Single) an so on OR Restart the machine OR check the USB cable.
+- Recheck the code again and find the mistakes
+- Restart the machine OR check the code.
+  
+ </details>
+
 </details>
+
+
+ 
+
 
