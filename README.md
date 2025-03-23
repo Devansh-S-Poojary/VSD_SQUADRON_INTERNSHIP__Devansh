@@ -9,7 +9,7 @@
   <details>
   <summary> 
     
-# Objective:
+## Objective:
   </summary>
                
 Participants are expected to understand and document the provided Verilog code, create the necessary PCF file, and integrate the design with the VSDSquadron FPGA Mini board using the provided datasheet.
@@ -17,7 +17,7 @@ Participants are expected to understand and document the provided Verilog code, 
 <details>
   <summary> 
         
-# Step 1 Understanding the Verilog Code
+## Step 1 Understanding the Verilog Code
   </summary>
 
  This is the Verilog code link- https://github.com/thesourcerer8/VSDSquadron_FM/blob/main/led_blue/top.v 
@@ -158,7 +158,7 @@ Here you go
 <details>
   <summary>
     
-# Step 2: Creating the PCF File
+## Step 2: Creating the PCF File
   </summary>
   
   Access the PCF file from the provided link: https://github.com/thesourcerer8/VSDSquadron_FM/blob/main/led_blue/VSDSquadronFM.pcf
@@ -208,7 +208,7 @@ Access the pcf file from the attachments, They are working in my board successfu
 <details>
   <summary> 
     
-# Step-3 Implement in VSDsquadron  
+## Step-3 Implement in VSDsquadron  
   </summary>
 
   First lets check the Blue project
@@ -239,7 +239,7 @@ I had a hard time taking the photos of the superfast blinker
 <details>
  <summary>
 
-   # Step-4 Final Documentation
+   ## Step-4 Final Documentation
  </summary>
  
  # Summary of the Verilog Code Functionality
