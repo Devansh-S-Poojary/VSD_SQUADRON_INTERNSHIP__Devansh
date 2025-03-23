@@ -6,6 +6,8 @@
 # Getting Started 
   </summary>
 
+Refer to the Datasheet (check the files of this repo) to install the required things.
+
    Let's start the virtual box(I have changed the Desktop background!)
 ![image](https://github.com/user-attachments/assets/22ad717b-27bb-473d-b614-9c4bdd4872a4)
 
@@ -52,11 +54,11 @@ Participants are expected to understand and document the provided Verilog code, 
   </summary>
 
  This is the Verilog code link- https://github.com/thesourcerer8/VSDSquadron_FM/blob/main/led_blue/top.v 
-Remove the first # while using
+
 
 
  ```bash
-  #module top (
+  module top (
   output wire led_red  , 
   output wire led_blue , 
   output wire led_green , 
