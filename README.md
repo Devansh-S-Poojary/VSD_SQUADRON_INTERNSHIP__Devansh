@@ -3,6 +3,36 @@
 <details>
   <summary> 
     
+# Getting Started 
+  </summary>
+
+   Let's start the virtual box(I have changed the Desktop background!)
+![image](https://github.com/user-attachments/assets/22ad717b-27bb-473d-b614-9c4bdd4872a4)
+
+Lets open the Terminal
+![image](https://github.com/user-attachments/assets/e86f69ee-5b65-4d5c-b2b8-c8cfcc6da551)
+
+Lets check the Blink_Led file (Which is a sample file pre-stored)
+![image](https://github.com/user-attachments/assets/064969bd-537d-449a-b7a9-ab5d0e1ac8a7)
+
+There were only 3 files when I installed. But when I run the code, there were more files which are generated. 
+
+These are the real files (I deleted the generated files 😃)
+![image](https://github.com/user-attachments/assets/e4b37ab0-3b3d-45eb-ac14-df3bed1a9a71)
+
+- .v file stands for "Verilog" file
+
+- .pcf file stands for "Physical Constraints File"
+
+- And a Makefile is a script used with the "make" build system to automate repetitive tasks in compiling, synthesizing, and uploading designs to an FPGA. It defines rules for building projects efficiently, ensuring dependencies are handled correctly.
+
+So now we know the basics, right? Come, lets check the Tasks and their steps 🥳
+
+  </details>
+    
+<details>
+  <summary> 
+    
 # Task-1 
   </summary>
   
@@ -13,6 +43,7 @@
   </summary>
                
 Participants are expected to understand and document the provided Verilog code, create the necessary PCF file, and integrate the design with the VSDSquadron FPGA Mini board using the provided datasheet.
+
 </details>
 <details>
   <summary> 
