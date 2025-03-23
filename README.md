@@ -27,8 +27,49 @@ These are the real files (I deleted the generated files 😃)
 - .pcf file stands for "Physical Constraints File"
 
 - And a Makefile is a script used with the "make" build system to automate repetitive tasks in compiling, synthesizing, and uploading designs to an FPGA. It defines rules for building projects efficiently, ensuring dependencies are handled correctly.
+- use the command "nano" to open these files
 
-So now we know the basics, right? Come, lets check the Tasks and their steps 🥳
+## Now let's check what is inside all of these files.
+
+![image](https://github.com/user-attachments/assets/fab32f5e-1871-476a-9a48-f71abd3a5968)
+
+As mentioned, we use "nano" before each of these files to see what is inside them
+![image](https://github.com/user-attachments/assets/0acc4dcf-abfa-4139-ae67-2b2ebda498a2)
+
+# Let's see in VSDSquadron_FM.pcf file
+
+![image](https://github.com/user-attachments/assets/992258ea-82ca-4a26-a9bc-cd2759b76cb8)
+
+You can see this inside it
+
+![image](https://github.com/user-attachments/assets/b83890ac-4a14-4971-a07d-4472548e80c6)
+
+# Now we will se inside the rgb_blink.v
+
+![image](https://github.com/user-attachments/assets/4e67e481-7dd6-4cb9-8cdd-915c14d8bcd7)
+
+![image](https://github.com/user-attachments/assets/45fe7680-7d0f-4dba-b413-1b9a4f9916eb)
+
+# Makefile
+
+![image](https://github.com/user-attachments/assets/32ea5536-c963-4279-88a3-dff5911945ed)
+
+
+![image](https://github.com/user-attachments/assets/5b08986b-d3da-47ee-9757-f1d75b2d036f)
+
+# rgb_blink.json
+
+![image](https://github.com/user-attachments/assets/5a65662a-2d46-4442-b73f-4d8c84d498ef)
+
+# rgb_blink.asc
+
+![image](https://github.com/user-attachments/assets/8cdcda38-104e-4aed-8221-909ee2082053)
+
+# check rgb_blink.timings
+
+![image](https://github.com/user-attachments/assets/e7b3cb35-f627-476d-9849-e3fdcf1b26ad)
+
+# So we know the basics, right? Come, lets check the Tasks and their steps 🥳
 
   </details>
     
