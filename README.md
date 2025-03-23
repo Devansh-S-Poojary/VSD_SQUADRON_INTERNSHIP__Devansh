@@ -204,10 +204,11 @@ Pin	Signal	  Function in Verilog	          Function in Hardware
 # Creating a PCF file
 Access the pcf file from the attachments, They are working in my board successfully.
 </details>
+
 <details>
   <summary> 
     
-# STEP 3 Implement in the VSDsquadron board 
+# Step-3 Implement in VSDsquadron board 
   </summary>
 
   First lets check the Blue project
