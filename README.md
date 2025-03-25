@@ -290,7 +290,7 @@ Access the pcf file from the attachments, They are working in my board successfu
    ![image](https://github.com/user-attachments/assets/ac9cc3ea-309f-4a08-95ec-8950bc8f115b)
 The Blue LED is ON 
 
-
+https://github.com/Devansh-S-Poojary/VSD_SQUADRON_INTERNSHIP__Devansh/blob/main/FPGA_-_Task-_-1.mp4 
 
 # Now lets check my own project
 These were the stunning results
@@ -407,8 +407,151 @@ For **MOST OF THESE PROBLEMS**, the Solution was restarting the computer and Vir
 
 Access the code from [the Repository](https://github.com/thesourcerer8/VSDSquadron_FM/tree/main/uart_loopback)
 
+## What is inside the code (uart_trx.v)?
+
+```
+// 8N1 UART Module, transmit only
+
+module uart_tx_8n1 (
+    clk,        // input clock
+    txbyte,     // outgoing byte
+    senddata,   // trigger tx
+    txdone,     // outgoing byte sent
+    tx,         // tx wire
+    );
+
+    /* Inputs */
+    input clk;
+    input[7:0] txbyte;
+    input senddata;
+
+    /* Outputs */
+    output txdone;
+    output tx;
+
+    /* Parameters */
+    parameter STATE_IDLE=8'd0;
+    parameter STATE_STARTTX=8'd1;
+    parameter STATE_TXING=8'd2;
+    parameter STATE_TXDONE=8'd3;
+
+    /* State variables */
+    reg[7:0] state=8'b0;
+    reg[7:0] buf_tx=8'b0;
+    reg[7:0] bits_sent=8'b0;
+    reg txbit=1'b1;
+    reg txdone=1'b0;
+
+    /* Wiring */
+    assign tx=txbit;
+
+    /* always */
+    always @ (posedge clk) begin
+        // start sending?
+        if (senddata == 1 && state == STATE_IDLE) begin
+            state <= STATE_STARTTX;
+            buf_tx <= txbyte;
+            txdone <= 1'b0;
+        end else if (state == STATE_IDLE) begin
+            // idle at high
+            txbit <= 1'b1;
+            txdone <= 1'b0;
+        end
+
+        // send start bit (low)
+        if (state == STATE_STARTTX) begin
+            txbit <= 1'b0;
+            state <= STATE_TXING;
+        end
+        // clock data out
+        if (state == STATE_TXING && bits_sent < 8'd8) begin
+            txbit <= buf_tx[0];
+            buf_tx <= buf_tx>>1;
+            bits_sent = bits_sent + 1;
+        end else if (state == STATE_TXING) begin
+            // send stop bit (high)
+            txbit <= 1'b1;
+            bits_sent <= 8'b0;
+            state <= STATE_TXDONE;
+        end
+
+        // tx done
+        if (state == STATE_TXDONE) begin
+            txdone <= 1'b1;
+            state <= STATE_IDLE;
+        end
+
+    end
+
+endmodule
+```
+
+## What is the meaning of the code?
+
+```
+- This is a UART (Universal Asynchronous Receiver-Transmitter) transmitter module written in Verilog.
+It sends 8-bit data serially over a single wire (tx).
+The communication format used is 8N1, meaning:
+~ 8 data bits
+~ No parity bit
+~ 1 stop bit
+```
+
+# Working 
+
+## 1. Idle State ("STATE_IDLE)
+
+- "tx" stays HIGH (default idle state for UART).
+
+- If "senddata" is HIGH, it loads "txbyte" (8-bit data) into "buf_tx" and moves to the next state.
+
+## 2. Start Bit ("STATE_STARTTX")
+
+- The first thing a UART transmission does is send a start bit (LOW).
+
+- The module sets "tx" to "0" to indicate the start of transmission.
+
+## 3. Sending 8 Data Bits ("STATE_TXING")
+
+- The module transmits the least significant bit (LSB) first.
+
+- Each bit is shifted out serially, and "tx" takes the value of "buf_tx[0]".
+
+- This process repeats until all 8 bits are sent.
+
+## 4. Stop Bit ("STATE_TXDONE")
+
+- After the 8 data bits, it sends a stop bit (HIGH) to signal the end of transmission.
+
+- "txdone" is set to "1" to indicate the byte has been sent.
+
+## 5. Returning to Idle
+
+- After the stop bit, "tx" stays HIGH, and the module returns to "STATE_IDLE".
+
+## The whole function in just 5 points
+
+- This is a transmit-only UART module.
+- The data is sent bit by bit over the "tx" line.
+- It follows the 8N1 UART protocol (Start → 8 bits → Stop).
+- The "clk" (clock) controls the timing of each state transition.
+- The "txdone" signal tells when the transmission is complete.
+
+  # Step-2 Design Documentation
+
+- ## Create a block diagram illustrating the UART loopback architecture.
+
+First we will see what is inside the .pcf file
+
+```
+set_io  led_green 40
+set_io  led_red	39
+set_io  led_blue 41
+set_io  uarttx 14
+set_io  uartrx 15
+set_io  hw_clk 20
+```
+  
+- ## Develop a detailed circuit diagram showing connections between the FPGA and any peripheral devices used.
+  
   </details>
-
- 
-
-
