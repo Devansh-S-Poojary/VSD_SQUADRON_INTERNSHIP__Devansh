@@ -290,6 +290,8 @@ Access the pcf file from the attachments, They are working in my board successfu
    ![image](https://github.com/user-attachments/assets/ac9cc3ea-309f-4a08-95ec-8950bc8f115b)
 The Blue LED is ON 
 
+
+
 # Now lets check my own project
 These were the stunning results
 ---
@@ -394,6 +396,18 @@ For **MOST OF THESE PROBLEMS**, the Solution was restarting the computer and Vir
 
 </details>
 
+<details>
+  <summary> 
+    
+# Task-2
+  </summary>
+
+
+## Step-1 Study the Existing Code:
+
+Access the code from [the Repository](https://github.com/thesourcerer8/VSDSquadron_FM/tree/main/uart_loopback)
+
+  </details>
 
  
 
