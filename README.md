@@ -551,7 +551,31 @@ set_io  uarttx 14
 set_io  uartrx 15
 set_io  hw_clk 20
 ```
-  
-- ## Develop a detailed circuit diagram showing connections between the FPGA and any peripheral devices used.
+
+  The .pcf file states that,
+  - Green LED pin is 40
+  - Red LED pin is 39
+  - Blue LED pin is 41
+  - uarttx pin is 14
+  - uartrx pin is 15
+  - hw_clk pin is 20
+
+   ## ROUGH SKETCH
+
+  ### 1. Preparation 
+
+  I am using the MS Paint tool to create it
+
+  First we use various shapes and fill them with colour
+![image](https://github.com/user-attachments/assets/b31814af-4971-463c-9ebc-24d30bb090b4)
+
+Then we start adjusting it by erasing etc
+
+This is our outcome
+
+![image](https://github.com/user-attachments/assets/24f6891c-40a2-4405-a5ba-6168aaa69a2b)
+
+Thus this is the Final [Block Diagram](https://github.com/user-attachments/assets/a015b5cd-85a8-41bc-be4f-ce593909c2c7) created by me.
+   ## Develop a detailed circuit diagram showing connections between the FPGA and any peripheral devices used.
   
   </details>
