@@ -600,5 +600,24 @@ Thus this is the Final [Block Diagram](https://github.com/user-attachments/asset
 
  # 3. Implementation
 
+These were the results
+
+![WhatsApp Image 2025-03-27 at 18 37 19_1256cebb](https://github.com/user-attachments/assets/e5fdf01a-35fd-465b-88f5-968224972eab)
+
+# 4. Testing and Verification
+
+When I Searched the WEB, I Found Docklight.
+    
+Open Docklight - and check that our Real system is connected to the right com port.
+
+![image](https://github.com/user-attachments/assets/e927390a-f64f-467f-82e5-58ac1d6d0264)
+
+Then double click on the blue box in send sequences and enter a name, select a format and then write anything, click "Apply" and then verify that this has entered in send sequences. Then, click the arrow beside the name and verify the result is as follows:
+
+![image](https://github.com/user-attachments/assets/cf3fb1d8-3027-4716-9921-0e5fb7c59372)
+
+
+
+
  
   </details>
