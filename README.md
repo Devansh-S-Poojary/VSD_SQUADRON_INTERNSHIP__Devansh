@@ -577,5 +577,28 @@ This is our outcome
 
 Thus this is the Final [Block Diagram](https://github.com/user-attachments/assets/a015b5cd-85a8-41bc-be4f-ce593909c2c7) created by me.
    ## Develop a detailed circuit diagram showing connections between the FPGA and any peripheral devices used.
-  
+
+   The circuit is almost similar to the block diagram.
+
+   I used wokwi to do it.
+
+   I searched the web and found an [FPGA Project](https://wokwi.com/projects/411237214736236545)  
+
+   Now we can use it to create our circuit.
+
+- I tried using simply a custom chip as my FPGA, with the connections.
+- The RGB led is for the LED's.
+- I used simply a LED for rx signal.
+- I used pushbutton for tx.
+- And a buzzer for the clock
+
+- OFCOURSE, the circuit is not working, but for visualisation, this is good.
+
+  ![image](https://github.com/user-attachments/assets/63068931-aa20-4c1a-9601-81f35d5b0086)
+
+  Here is the [circuit diagram](https://wokwi.com/projects/426582088903001089)
+
+ # 3. Implementation
+
+ 
   </details>
