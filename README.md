@@ -609,15 +609,13 @@ These were the results
 When I Searched the WEB, I Found Docklight.
     
 Open Docklight - and check that our Real system is connected to the right com port.
-
-![image](https://github.com/user-attachments/assets/e927390a-f64f-467f-82e5-58ac1d6d0264)
-
 Then double click on the blue box in send sequences and enter a name, select a format and then write anything, click "Apply" and then verify that this has entered in send sequences. Then, click the arrow beside the name and verify the result is as follows:
 
-![image](https://github.com/user-attachments/assets/cf3fb1d8-3027-4716-9921-0e5fb7c59372)
+![image](https://github.com/user-attachments/assets/298fc743-6d51-49a3-94af-cc4c573a1d31)
+
+![image](https://github.com/user-attachments/assets/47a7f864-2fa9-458e-9380-3b264b0f8904)
+
+https://github.com/user-attachments/assets/443cf339-d2ac-45a5-885c-c1fdc74a46ed
 
 
-
-
- 
-  </details>
+ </details>
