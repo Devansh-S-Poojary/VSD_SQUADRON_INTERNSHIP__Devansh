@@ -613,9 +613,6 @@ Then double click on the blue box in send sequences and enter a name, select a f
 
 ![image](https://github.com/user-attachments/assets/ba2e102a-dc7e-4a17-8060-372b679b1e08)
 
-https://github.com/user-attachments/assets/443cf339-d2ac-45a5-885c-c1fdc74a46ed
-
-
  </details>
 
 <details>
