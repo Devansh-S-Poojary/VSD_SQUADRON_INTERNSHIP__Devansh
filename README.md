@@ -627,6 +627,9 @@ https://github.com/user-attachments/assets/443cf339-d2ac-45a5-885c-c1fdc74a46ed
   </summary>
 
 
+
+Here is the Video of [Task-3 in PuTTY and Virtual Box](https://github.com/Devansh-S-Poojary/VSD_SQUADRON_INTERNSHIP__Devansh/blob/main/FPGA%23TASK%233%23DEVANSH.mp4)
+
   </details>
 
  
