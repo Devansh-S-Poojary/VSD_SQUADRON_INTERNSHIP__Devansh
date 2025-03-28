@@ -761,7 +761,47 @@ The module defines four states:
 
 ## Block and Circuit Diagram
 
+Again, let's check the [PCF File](https://github.com/thesourcerer8/VSDSquadron_FM/blob/main/uart_tx/VSDSquadronFM.pcf)
 
+```
+set_io  led_green 40
+set_io  led_red	39
+set_io  led_blue 41
+set_io  uarttx 14
+set_io  hw_clk 20
+```
+
+Notice that this is similar to the task 2 pcf file, but the rx file is not here as there is no need of it in this code.
+
+Let us design in MS Paint software
+
+Follow the same steps as in task 2 to create the blocks etc.
+
+Preparation- ![image](https://github.com/user-attachments/assets/7989b0c1-3f65-4c41-9b81-78c7b8d2856e)
+
+And this is the [final Block Diagram](https://github.com/user-attachments/assets/e940ad0d-5a43-4ff7-a1f4-bf85e64082bd)
+
+## Circuit Diagram
+
+Again I used Wokwi
+
+Again these are the connections now
+
+- I tried using simply a custom chip as my FPGA, with the connections.
+- The RGB led is for the LED's.
+- I used pushbutton for tx.
+- And a buzzer for the clock
+
+  Although it is not  working model, it is good for visualisation.
+
+  Here is the [Wokwi link](https://wokwi.com/projects/426648821279179777)
+
+  And the Circuit Diagram
+
+  ![image](https://github.com/user-attachments/assets/bc141b66-6e34-443c-8840-49144ba4cea8)
+  
+I used a Buzzer as clock because it is circular in shape!
+   
 ## Implementation
 
 - Download and Install PuTTY
