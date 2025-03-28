@@ -625,10 +625,166 @@ https://github.com/user-attachments/assets/443cf339-d2ac-45a5-885c-c1fdc74a46ed
     
 # Task-3
   </summary>
+  
+## What does the verilog ode say?
+
+```
+// 8N1 UART Module, transmit only
+
+module uart_tx_8n1 (
+    clk,        // input clock
+    txbyte,     // outgoing byte
+    senddata,   // trigger tx
+    txdone,     // outgoing byte sent
+    tx,         // tx wire
+    );
+
+    /* Inputs */
+    input clk;
+    input[7:0] txbyte;
+    input senddata;
+
+    /* Outputs */
+    output txdone;
+    output tx;
+
+    /* Parameters */
+    parameter STATE_IDLE=8'd0;
+    parameter STATE_STARTTX=8'd1;
+    parameter STATE_TXING=8'd2;
+    parameter STATE_TXDONE=8'd3;
+
+    /* State variables */
+    reg[7:0] state=8'b0;
+    reg[7:0] buf_tx=8'b0;
+    reg[7:0] bits_sent=8'b0;
+    reg txbit=1'b1;
+    reg txdone=1'b0;
+
+    /* Wiring */
+    assign tx=txbit;
+
+    /* always */
+    always @ (posedge clk) begin
+        // start sending?
+        if (senddata == 1 && state == STATE_IDLE) begin
+            state <= STATE_STARTTX;
+            buf_tx <= txbyte;
+            txdone <= 1'b0;
+        end else if (state == STATE_IDLE) begin
+            // idle at high
+            txbit <= 1'b1;
+            txdone <= 1'b0;
+        end
+
+        // send start bit (low)
+        if (state == STATE_STARTTX) begin
+            txbit <= 1'b0;
+            state <= STATE_TXING;
+        end
+        // clock data out
+        if (state == STATE_TXING && bits_sent < 8'd8) begin
+            txbit <= buf_tx[0];
+            buf_tx <= buf_tx>>1;
+            bits_sent = bits_sent + 1;
+        end else if (state == STATE_TXING) begin
+            // send stop bit (high)
+            txbit <= 1'b1;
+            bits_sent <= 8'b0;
+            state <= STATE_TXDONE;
+        end
+
+        // tx done
+        if (state == STATE_TXDONE) begin
+            txdone <= 1'b1;
+            state <= STATE_IDLE;
+        end
+
+    end
+
+endmodule
+```
+
+The meaning-
+
+#### The term 8N1 means:
+- 8 data bits
+- N (no) parity bit
+- 1 stop bit
+
+This module transmits (TX) serial data but does not receive (RX).
+
+## 1. Inputs & Outputs
+
+### Inputs:
+
+- "clk": System clock.
+- "txbyte [7:0]": 8-bit data to send.
+- "senddata": Trigger signal to start transmission.
+
+### Outputs:
+
+- "txdone": Signals when transmission is complete.
+- "tx": Serial TX output line.
+
+## 2. State Machine for Transmission
+
+The module defines four states:
+- "STATE_IDLE (0)" → Waiting for "senddata"
+- "STATE_STARTTX (1)" → Sends start bit (0)
+- "STATE_TXING (2)" → Sends 8 data bits
+- "STATE_TXDONE (3)" → Sends stop bit (1) and sets "txdone"
+
+## 3. Working of the "always @ (posedge clk)" Block
+### Step 1: Waiting for "senddata"
+
+- If "senddata == 1" and the module is in "STATE_IDLE", it moves to "STATE_STARTTX".
+- Stores "txbyte" in "buf_tx" for shifting later.
+
+### Step 2: Sending Start Bit
+
+-Moves to "STATE_TXING" and sends start bit (0).
+
+## Step 3: Transmitting Data Bits
+
+- Sends one bit per clock cycle.
+- Shifts the "buf_tx" register to send the LSB first.
+
+## Step 4: Sending Stop Bit
+
+- Once all 8 bits are sent, sends stop bit (1).
+- Moves to "STATE_TXDONE".
+
+## Step 5: Indicating Completion
+
+- Sets "txdone = 1" and returns to "STATE_IDLE".
+
+## Block and Circuit Diagram
 
 
+## Implementation
 
+- Download and Install PuTTY
+- Connect the FPGA to the computer.
+- Choose the correct port and baud settings.
+- Check that a series of "D" is being generated.
+
+#### Jumping to the  virtual box
+
+- Open the VM
+- Go to terminal
+- From [this Website](https://github.com/thesourcerer8/VSDSquadron_FM/tree/main/uart_tx), Download the makefile, pcf file and the 2 Verilog files, and then flash it into the FPGA.
+- These are the combined results
+  
 Here is the Video of [Task-3 in PuTTY and Virtual Box](https://github.com/Devansh-S-Poojary/VSD_SQUADRON_INTERNSHIP__Devansh/blob/main/FPGA%23TASK%233%23DEVANSH.mp4)
+
+## Testing and Verification
+
+Check that a series of "D"s are generated and the RGB LED is blinking.
+
+[Task-3 in PuTTY and Virtual Box](https://github.com/Devansh-S-Poojary/VSD_SQUADRON_INTERNSHIP__Devansh/blob/main/FPGA%23TASK%233%23DEVANSH.mp4)
+
+While opening this file, if you get any error, try downloading and then watch it.
 
   </details>
 
