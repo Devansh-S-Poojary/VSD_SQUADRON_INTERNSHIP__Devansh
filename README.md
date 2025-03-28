@@ -611,7 +611,7 @@ When I Searched the WEB, I Found Docklight.
 Open Docklight - and check that our Real system is connected to the right com port.
 Then double click on the blue box in send sequences and enter a name, select a format and then write anything, click "Apply" and then verify that this has entered in send sequences. Then, click the arrow beside the name and verify the result is as follows:
 
-![image](https://github.com/user-attachments/assets/298fc743-6d51-49a3-94af-cc4c573a1d31)
+![image](https://github.com/user-attachments/assets/ba2e102a-dc7e-4a17-8060-372b679b1e08)
 
 https://github.com/user-attachments/assets/443cf339-d2ac-45a5-885c-c1fdc74a46ed
 
@@ -624,7 +624,7 @@ https://github.com/user-attachments/assets/443cf339-d2ac-45a5-885c-c1fdc74a46ed
 # Task-3
   </summary>
   
-## What does the verilog ode say?
+## What does the verilog code say?
 
 ```
 // 8N1 UART Module, transmit only
