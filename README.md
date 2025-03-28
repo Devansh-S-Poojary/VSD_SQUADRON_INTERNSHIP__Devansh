@@ -824,6 +824,118 @@ Check that a series of "D"s are generated and the RGB LED is blinking.
 
 While opening this file, if you get any error, try downloading and then watch it.
 
+# Final Documentation of Task-3
+
+<details>
+   <summary> 
+
+# 1. Code Explanation  
+  
+  </summary>
+  
+#### The term 8N1 means:
+- 8 data bits
+- N (no) parity bit
+- 1 stop bit
+
+This module transmits (TX) serial data but does not receive (RX).
+
+## 1. Inputs & Outputs
+
+### Inputs:
+
+- "clk": System clock.
+- "txbyte [7:0]": 8-bit data to send.
+- "senddata": Trigger signal to start transmission.
+
+### Outputs:
+
+- "txdone": Signals when transmission is complete.
+- "tx": Serial TX output line.
+
+## 2. State Machine for Transmission
+
+The module defines four states:
+- "STATE_IDLE (0)" → Waiting for "senddata"
+- "STATE_STARTTX (1)" → Sends start bit (0)
+- "STATE_TXING (2)" → Sends 8 data bits
+- "STATE_TXDONE (3)" → Sends stop bit (1) and sets "txdone"
+
+## 3. Working of the "always @ (posedge clk)" Block
+### Step 1: Waiting for "senddata"
+
+- If "senddata == 1" and the module is in "STATE_IDLE", it moves to "STATE_STARTTX".
+- Stores "txbyte" in "buf_tx" for shifting later.
+
+### Step 2: Sending Start Bit
+
+-Moves to "STATE_TXING" and sends start bit (0).
+
+## Step 3: Transmitting Data Bits
+
+- Sends one bit per clock cycle.
+- Shifts the "buf_tx" register to send the LSB first.
+
+## Step 4: Sending Stop Bit
+
+- Once all 8 bits are sent, sends stop bit (1).
+- Moves to "STATE_TXDONE".
+
+## Step 5: Indicating Completion
+
+- Sets "txdone = 1" and returns to "STATE_IDLE".
+
+</details>
+
+<details>
+  
+  <summary>
+
+# 2.  Block and Circuit Diagram 
+
+  </summary>
+  
+## Block Diagram-
+
+https://github.com/user-attachments/assets/e940ad0d-5a43-4ff7-a1f4-bf85e64082bd
+
+## Circuit Diagram-
+
+https://github.com/user-attachments/assets/bc141b66-6e34-443c-8840-49144ba4cea8
+
+https://wokwi.com/projects/426648821279179777
+
+</details>
+
+
+<details>
+<summary>
+      
+  # 3. Testing outcomes 
+
+  </summary>
+
+- Download and Install PuTTY
+- Connect the FPGA to the computer.
+- Choose the correct port and baud settings.
+- Check that a series of "D" is being generated.
+
+#### Jumping to the  virtual box
+
+- Open the VM
+- Go to terminal
+- From [this Website](https://github.com/thesourcerer8/VSDSquadron_FM/tree/main/uart_tx), Download the makefile, pcf file and the 2 Verilog files, and then flash it into the FPGA.
+  
+## Testing and Verification
+
+A series of "D"s are generated and the RGB LED is blinking.
+
+[Task-3 in PuTTY and Virtual Box](https://github.com/Devansh-S-Poojary/VSD_SQUADRON_INTERNSHIP__Devansh/blob/main/FPGA%23TASK%233%23DEVANSH.mp4)
+
+While opening this file, if you get any error, try downloading and then watch it.
+
+</details>
+
   </details>
 
  
